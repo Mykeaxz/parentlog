@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ParentLog – Support</title>
+<style>
+  :root { --bg:#f6f7f9; --fg:#1a2230; --muted:#5a6577; --line:#d9dee6; --brand:#142c54; --mint:#2f9e6e; --card:#fff; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#12171f; --fg:#e6e9ee; --muted:#9aa5b5; --line:#2a3340; --brand:#7fa3d6; --mint:#6fcf9a; --card:#1a212b; color-scheme: dark } }
+  body { margin:0; background:var(--bg); color:var(--fg); font:17px/1.6 Georgia,"Times New Roman",serif; }
+  .wrap { max-width:42rem; margin:0 auto; padding:40px 16px 64px; }
+  .brand { display:flex; align-items:center; gap:10px; font:600 14px system-ui,sans-serif; letter-spacing:.04em; text-transform:uppercase; color:var(--brand); border-top:4px solid var(--brand); padding-top:14px; }
+  .brand i { width:12px; height:12px; border-radius:3px; background:var(--brand); }
+  h1 { font:700 34px/1.15 system-ui,sans-serif; margin:18px 0 28px; }
+  h2 { font:700 20px/1.25 system-ui,sans-serif; margin:36px 0 10px; }
+  p, li { margin:0 0 12px; } ul, ol { padding-left:22px; }
+  .callout { background:var(--card); border:1px solid var(--line); border-left:4px solid var(--mint); border-radius:6px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:15px; }
+  .callout b { font-size:17px; }
+  code { font:14px ui-monospace,Menlo,monospace; background:var(--card); border:1px solid var(--line); border-radius:4px; padding:1px 5px; }
+  a { color:var(--brand); }
+  details { border-bottom:1px solid var(--line); padding:10px 0; }
+  summary { cursor:pointer; font:600 16px system-ui,sans-serif; }
+  details p { margin-top:8px; }
+  footer { margin-top:48px; padding-top:16px; border-top:1px solid var(--line); font:14px system-ui,sans-serif; color:var(--muted); }
+</style></head>
+<body><div class="wrap">
+  <div class="brand"><i></i> ParentLog</div>
+  <h1>Support</h1>
+
+  <p class="callout"><b>Email us: somvexdynamics@gmail.com</b><br>Tell us which email service you use (Gmail or Outlook), your PowerSchool version if you know it, and what you saw. A screenshot of the log-entry form with student details covered helps a lot. We answer within one working day.</p>
+
+  <h2>Common questions</h2>
+
+  <details><summary>The "Log this contact" button doesn't appear in Gmail</summary>
+    <p>Open a single message so its text is showing; the button sits in the message header next to the date. If it's still missing, reload the Gmail tab. Gmail's "Basic HTML" view isn't supported.</p></details>
+
+  <details><summary>Nothing appears on my PowerSchool page</summary>
+    <p>ParentLog only runs on the PowerSchool address you allowed. Open the ParentLog panel → Settings → paste your PowerSchool address (the part before <code>/teachers/</code>, e.g. <code>https://ps.yourdistrict.org</code>) → Allow → reload the PowerSchool tab.</p></details>
+
+  <details><summary>It says "Form not recognised"</summary>
+    <p>Your school uses a custom log form. ParentLog won't guess where fields go; use the Copy buttons in the panel to paste the text, date and subject yourself. Send us a screenshot of the empty form (student details covered) and we'll add support for it.</p></details>
+
+  <details><summary>The Log Type dropdown picked the wrong option</summary>
+    <p>Settings → "Log type to select" → type the exact option text your form shows (for example <code>Teacher Contact</code> or <code>Parent Contact</code>).</p></details>
+
+  <details><summary>The date is in the wrong format</summary>
+    <p>Settings → "Date format your form expects" → choose MM/DD/YYYY, DD/MM/YYYY or YYYY-MM-DD.</p></details>
+
+  <details><summary>An entry is stuck on "Submitted – confirming"</summary>
+    <p>ParentLog confirms a save when PowerSchool moves to a page without the form. If your PowerSchool stays on the same page after Submit, check the entry appeared in the student's log list, then open it in the panel and click <b>Mark as saved in PowerSchool</b>.</p></details>
+
+  <details><summary>I can't install extensions on my school Chromebook or account</summary>
+    <p>Your district manages Chrome and has to allow ParentLog. Send your IT team our <a href="it-brief.html">information page for school IT</a>; it explains the permissions and that no data leaves the browser.</p></details>
+
+  <details><summary>Where is my data? Can I export it?</summary>
+    <p>Everything is stored in Chrome on your computer, nothing on our side. Settings → <b>Export ledger (CSV)</b> gives you a spreadsheet. <b>Delete all entries</b> removes everything. See the <a href="privacy.html">privacy policy</a>.</p></details>
+
+  <h2>Report a bug or ask for a feature</h2>
+  <p>Email the address above. If you're comfortable with GitHub you can also <a href="https://github.com/Mykeaxz/parentlog/issues">open an issue</a>, where others can see the answer too.</p>
+
+  <footer>ParentLog is an independent product and is not affiliated with PowerSchool Holdings, Google or Microsoft.</footer>
+</div></body></html>
