@@ -1,0 +1,20 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Submit Log Entry</title></head>
+<body style="font-family:Arial;background:#f3f5f7;margin:0">
+<div style="background:#dfe6ee;padding:8px 12px;display:flex;justify-content:space-between">
+  <h1 style="font-size:15px;margin:0">Submit Log Entry</h1>
+  <select><option>Submit Log Entry</option><option>View Log Entries</option></select>
+</div>
+<div id="studentHeader" style="padding:8px 12px;background:#fff"><span class="studentName">Smith, Jane</span> &nbsp; 12345 &nbsp; 2012-05-01</div>
+<form id="logForm" action="/teachers/changesrecorded.html" method="get">
+<table style="margin:12px">
+  <tr><td class="bold">Date</td><td><input type="text" name="[Log_Entries.-1]Entry_Date" value="09/29/2026" size="10"></td></tr>
+  <tr><td class="bold">Log Type</td><td><select name="[Log_Entries.-1]LogTypeID">
+      <option value="-100000">Discipline</option>
+      <option value="-100001" selected>Teacher</option>
+      <option value="-100002">Counselor</option></select></td></tr>
+  <tr><td class="bold">Title</td><td><input type="text" name="[Log_Entries.-1]Subject" size="60" maxlength="255"></td></tr>
+  <tr><td class="bold">Log Entry</td><td><textarea name="[Log_Entries.-1]Entry" rows="10" cols="70"></textarea></td></tr>
+</table>
+<div style="text-align:right;padding:0 12px 12px"><button type="submit" class="button">Submit</button></div>
+</form>
+</body></html>

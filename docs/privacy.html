@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ParentLog – Privacy Policy</title>
+<style>body{margin:0}</style>
+<style>
+  /* Layout: single reading column, navy brand rule at top, plain document typography */
+  :root {
+    --bg: #f6f7f9; --fg: #1a2230; --muted: #5a6577; --line: #d9dee6;
+    --brand: #142c54; --mint: #2f9e6e; --card: #ffffff;
+    --font-body: Georgia, "Times New Roman", serif;
+    --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #12171f; --fg: #e6e9ee; --muted: #9aa5b5; --line: #2a3340; --brand: #7fa3d6; --mint: #6fcf9a; --card: #1a212b; color-scheme: dark } }
+  :root[data-theme="dark"] { --bg: #12171f; --fg: #e6e9ee; --muted: #9aa5b5; --line: #2a3340; --brand: #7fa3d6; --mint: #6fcf9a; --card: #1a212b; color-scheme: dark }
+  body { background: var(--bg); color: var(--fg); font: 17px/1.6 var(--font-body); }
+  .wrap { max-width: 42rem; margin: 0 auto; padding-block: 40px 64px; padding-inline: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; font: 600 14px var(--font-ui); letter-spacing: .04em; text-transform: uppercase; color: var(--brand); border-top: 4px solid var(--brand); padding-top: 14px; }
+  .brand i { width: 12px; height: 12px; border-radius: 3px; background: var(--brand); }
+  h1 { font: 700 34px/1.15 var(--font-ui); margin: 18px 0 4px; text-wrap: balance; }
+  .date { font: 14px var(--font-ui); color: var(--muted); margin: 0 0 32px; }
+  h2 { font: 700 20px/1.25 var(--font-ui); margin: 36px 0 10px; }
+  p, li { margin: 0 0 12px; }
+  ul { padding-left: 22px; }
+  .callout { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--mint); border-radius: 6px; padding: 14px 18px; font-family: var(--font-ui); font-size: 15px; }
+  table { width: 100%; border-collapse: collapse; font: 15px/1.45 var(--font-ui); }
+  th, td { text-align: left; vertical-align: top; padding: 10px 8px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; }
+  code { font: 14px ui-monospace, Menlo, monospace; background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; }
+  .tablewrap { overflow-x: auto; }
+  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); font: 14px var(--font-ui); color: var(--muted); }
+</style>
+<div class="wrap">
+  <div class="brand"><i></i> ParentLog</div>
+  <h1>Privacy Policy</h1>
+  <p class="date">Effective 29 September 2026 · Version 1.0</p>
+
+  <p class="callout"><strong>The short version:</strong> ParentLog has no server, no account and no analytics. Everything it stores lives in your own Chrome profile, and it makes no network requests. Nothing you capture ever leaves your browser.</p>
+
+  <h2>What ParentLog is</h2>
+  <p>ParentLog is a Chrome extension for teachers. It copies the details of a parent email you have already sent or received into your school's PowerSchool log-entry form, and keeps a personal list (a "ledger") of those contacts.</p>
+
+  <h2>What we collect</h2>
+  <p>Nothing. We, the developers, receive no data from the extension. There is no telemetry, no crash reporting and no usage tracking.</p>
+
+  <h2>What ParentLog stores on your device</h2>
+  <p>When you click <strong>Log this contact</strong> on an email, ParentLog reads that one email and stores the following in Chrome's extension storage on your computer:</p>
+  <ul>
+    <li>the other party's name and email address (the parent)</li>
+    <li>your own email address, used only to tell "sent" from "received"</li>
+    <li>the email's date and subject</li>
+    <li>the email's text, with any quoted earlier thread stored separately</li>
+    <li>a link back to the email</li>
+    <li>any student name or outcome note you type yourself</li>
+    <li>which PowerSchool page you filled it into and whether it was saved</li>
+  </ul>
+  <p>This data stays in your browser profile. ParentLog uses <code>chrome.storage.local</code>, so Chrome does not sync it to your Google account or to other devices.</p>
+
+  <h2>What ParentLog reads</h2>
+  <ul>
+    <li><strong>Gmail and Outlook on the web:</strong> only the message you click the button on, and only at that moment. It never scans your inbox.</li>
+    <li><strong>PowerSchool:</strong> only on the site address you explicitly allow in Settings. It reads the log-entry form fields and the student name shown on that page so it can fill the form and report what it did. It never clicks Submit for you.</li>
+  </ul>
+
+  <h2>What ParentLog never does</h2>
+  <ul>
+    <li>send email or student text anywhere</li>
+    <li>use AI or any external service</li>
+    <li>submit anything to PowerSchool automatically</li>
+    <li>run on websites other than Gmail, Outlook on the web and the PowerSchool address you allow</li>
+  </ul>
+
+  <h2>Deleting your data</h2>
+  <p>Open the ParentLog panel, go to Settings and choose <strong>Delete all entries</strong>, or remove the extension from Chrome. Either action deletes everything ParentLog stored.</p>
+
+  <h2>Permissions explained</h2>
+  <div class="tablewrap">
+  <table>
+    <tr><th>Permission</th><th>Why it is needed</th></tr>
+    <tr><td><code>storage</code></td><td>Keep your ledger and settings on your device.</td></tr>
+    <tr><td><code>sidePanel</code></td><td>Show the ledger beside your tabs.</td></tr>
+    <tr><td><code>activeTab</code>, <code>scripting</code></td><td>Read the open email when you click <em>Capture open email</em>, and run on the PowerSchool site you allowed.</td></tr>
+    <tr><td>mail.google.com, outlook.office.com, outlook.office365.com, outlook.live.com</td><td>Show the <em>Log this contact</em> button on emails.</td></tr>
+    <tr><td>Optional: any site</td><td>So you can allow your own district's PowerSchool address. Only the one address you enter is ever used.</td></tr>
+  </table>
+  </div>
+
+  <h2>Children's data</h2>
+  <p>ParentLog is used by teachers, not by students. Student names may appear in text the teacher captures; that text is stored only on the teacher's device under the school's own data-handling rules, and is never transmitted to us or to any third party.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If the extension ever adds a feature that sends data anywhere, this policy will be updated first and the change will be described in the extension's release notes.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy: <span id="mail">somvexdynamics@gmail.com</span></p>
+
+  <footer>ParentLog is an independent product and is not affiliated with, endorsed by or connected to PowerSchool Holdings, Google or Microsoft.</footer>
+</div>
+</html>

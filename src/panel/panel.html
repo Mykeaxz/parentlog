@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ParentLog</title>
+  <link rel="stylesheet" href="panel.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><span class="logo"></span><span>ParentLog</span></div>
+    <div class="top-actions">
+      <button id="btn-capture" class="btn" title="Read the email open in the current tab (Gmail or Outlook)">+ Capture open email</button>
+      <button id="btn-settings" class="icon-btn" title="Settings" aria-label="Settings">⚙</button>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button data-tab="draft" class="tab active">Drafts <span class="count" id="c-draft">0</span></button>
+    <button data-tab="filled" class="tab">Filled <span class="count" id="c-filled">0</span></button>
+    <button data-tab="saved" class="tab">Saved <span class="count" id="c-saved">0</span></button>
+    <button data-tab="all" class="tab">All</button>
+  </nav>
+
+  <div class="search"><input id="search" type="search" placeholder="Search student, parent, subject…" /></div>
+
+  <main id="list" class="list"></main>
+
+  <!-- Entry editor -->
+  <section id="editor" class="sheet hidden" aria-label="Edit contact">
+    <div class="sheet-head">
+      <button id="ed-back" class="icon-btn" aria-label="Back">←</button>
+      <span id="ed-status" class="badge"></span>
+      <span class="grow"></span>
+      <button id="ed-delete" class="icon-btn danger" title="Delete this contact" aria-label="Delete">🗑</button>
+    </div>
+    <div class="sheet-body">
+      <label>Student <input id="ed-student" placeholder="Student name (fills in automatically after first PowerSchool fill)" /></label>
+      <div class="row2">
+        <label>Parent <input id="ed-parent" /></label>
+        <label>Email date <input id="ed-date" type="date" /></label>
+      </div>
+      <label>Title / Subject <input id="ed-subject" /></label>
+      <label>Entry text <textarea id="ed-body" rows="9"></textarea></label>
+      <label class="check" id="ed-quoted-wrap"><input id="ed-quoted" type="checkbox" /> Include earlier messages in the thread (<span id="ed-quoted-len">0</span> chars)</label>
+      <label>Outcome <input id="ed-outcome" placeholder="e.g. Parent replied 9/30 – will check homework nightly" /></label>
+      <details class="preview">
+        <summary>Preview of what goes into PowerSchool</summary>
+        <pre id="ed-preview"></pre>
+      </details>
+      <div id="ed-report" class="report"></div>
+      <div class="sheet-actions">
+        <button id="ed-save" class="btn primary">Save changes</button>
+        <button id="ed-copy" class="btn">Copy entry text</button>
+        <button id="ed-mark-saved" class="btn">Mark as saved in PowerSchool</button>
+        <a id="ed-open-mail" class="btn link" target="_blank" rel="noopener">Open email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Settings -->
+  <section id="settings" class="sheet hidden" aria-label="Settings">
+    <div class="sheet-head">
+      <button id="st-back" class="icon-btn" aria-label="Back">←</button>
+      <b>Settings</b>
+    </div>
+    <div class="sheet-body">
+      <h3>Your PowerSchool site</h3>
+      <p class="hint">Paste the address of your PowerTeacher page (e.g. <code>https://ps.yourdistrict.org</code>). ParentLog only runs on the sites listed here.</p>
+      <div class="row-inline">
+        <input id="st-ps-url" placeholder="https://ps.yourdistrict.org" />
+        <button id="st-ps-add" class="btn primary">Allow</button>
+      </div>
+      <ul id="st-ps-list" class="origin-list"></ul>
+      <div id="st-ps-msg" class="msg"></div>
+
+      <h3>Log entry defaults</h3>
+      <label>Log type to select <input id="st-logtype" placeholder="Teacher" />
+        <span class="hint">Text of the dropdown option on your form (e.g. "Teacher", "Teacher Contact", "Parent Contact").</span></label>
+      <label>Date format your form expects
+        <select id="st-datefmt">
+          <option>MM/DD/YYYY</option>
+          <option>DD/MM/YYYY</option>
+          <option>YYYY-MM-DD</option>
+        </select>
+      </label>
+      <label class="check"><input id="st-header" type="checkbox" /> Start entry with "Email sent to … on … — Subject: …"</label>
+      <label class="check"><input id="st-outcome" type="checkbox" /> Append "Outcome: …" line when set</label>
+
+      <h3>Your data</h3>
+      <p class="hint">Everything stays in this browser (Chrome extension storage). No account, no server, no AI. Captured: <b id="st-c-captured">0</b> · Filled: <b id="st-c-filled">0</b> · Saved: <b id="st-c-saved">0</b></p>
+      <div class="sheet-actions">
+        <button id="st-export" class="btn">Export ledger (CSV)</button>
+        <button id="st-clear" class="btn danger">Delete all entries</button>
+      </div>
+      <p class="hint small">ParentLog v<span id="st-version"></span>. Not affiliated with PowerSchool.</p>
+    </div>
+  </section>
+
+  <!-- Onboarding -->
+  <section id="onboarding" class="sheet hidden" aria-label="Welcome">
+    <div class="sheet-body onboarding">
+      <div class="brand big"><span class="logo"></span><span>ParentLog</span></div>
+      <p>Turn a parent email you already sent into a PowerSchool log entry — and keep your own list of every contact.</p>
+      <ol class="steps">
+        <li><b>Allow your PowerSchool site.</b>
+          <div class="row-inline"><input id="ob-ps-url" placeholder="https://ps.yourdistrict.org" /><button id="ob-ps-add" class="btn primary">Allow</button></div>
+          <div id="ob-ps-msg" class="msg"></div>
+        </li>
+        <li><b>In Gmail or Outlook</b>, open the email and click <span class="pill">Log this contact</span>.</li>
+        <li><b>In PowerSchool</b>, open the student → <i>Submit Log Entry</i>. A ParentLog box appears — click <b>Fill this form</b>, check it, click Submit.</li>
+      </ol>
+      <p class="hint">Nothing leaves your browser. Student and parent text is never sent anywhere.</p>
+      <button id="ob-done" class="btn primary">Start</button>
+    </div>
+  </section>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="panel.js"></script>
+</body>
+</html>

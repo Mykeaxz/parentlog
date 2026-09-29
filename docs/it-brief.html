@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ParentLog – Information for school IT</title><style>body{margin:0;font:16px/1.6 system-ui,sans-serif;color:#1a2230;background:#f6f7f9}.w{max-width:44rem;margin:0 auto;padding:40px 16px}h1{font-size:30px}table{border-collapse:collapse;width:100%;font-size:15px}td,th{border-bottom:1px solid #d9dee6;padding:8px;text-align:left;vertical-align:top}pre{background:#fff;border:1px solid #d9dee6;padding:12px;overflow-x:auto;font-size:13px}code{background:#fff;border:1px solid #d9dee6;border-radius:3px;padding:1px 4px;font-size:14px}</style></head><body><div class="w"><h1>ParentLog – one page for school IT</h1>
+
+<p><b>What it is:</b> a Chrome extension teachers use to copy a parent email they already sent into PowerSchool's log-entry form, and to keep their own list of parent contacts.</p>
+
+<p><b>What it is not:</b> a cloud service. There is no server, no account, no analytics, no AI, no data leaving the browser.</p>
+
+<h2>Data flow</h2>
+<pre>
+<p>Gmail / Outlook tab ──(teacher clicks button)──▶ Chrome extension storage on that computer ──(teacher clicks Fill)──▶ PowerSchool form fields</p>
+</pre>
+<ul><li>Reads one email, only when the teacher clicks <b>Log this contact</b> on it. Never scans the mailbox.</li>
+<li>Fills PowerSchool's Date, Log Type, Title and Log Entry fields. <b>Never clicks Submit</b> – the teacher reviews and submits.</li>
+<li>Stores the ledger in <code>chrome.storage.local</code> (not synced to Google). Deleted by the teacher or by uninstalling.</li>
+<li>Makes <b>zero network requests</b>. Verify: chrome://extensions → ParentLog → Inspect service worker → Network tab.</li>
+</ul>
+<h2>Permissions</h2>
+<table>
+<tr><th>Permission</th><th>Scope</th></tr>
+<tr><td>Gmail, Outlook web</td><td>inject the button, read the clicked message</td></tr>
+<tr><td>Your PowerSchool origin (e.g. <code>https://ps.district.org</code>)</td><td>requested at runtime, for that one origin only; you can pre-grant via policy</td></tr>
+<tr><td>storage, sidePanel, activeTab, scripting</td><td>local ledger UI and runtime registration for the PowerSchool origin</td></tr>
+</table>
+
+<h2>Rolling out via Google Admin (managed Chrome)</h2>
+<p>Admin console → Devices → Chrome → Apps & extensions → Users & browsers → add by extension ID (from the Web Store listing) → <b>Force install</b> or <b>Allow install</b>. Under the extension's settings you can set <code>runtime_allowed_hosts</code> to your PowerSchool origin so teachers don't see a permission prompt, and <code>runtime_blocked_hosts</code> for everything else.</p>
+
+<h2>FERPA note</h2>
+<p>Student names and parent emails stay on the teacher's device inside Chrome's extension storage, the same place a locally-saved draft would live. ParentLog does not create a new data recipient. School data-retention rules apply to the teacher's ledger as they would to any local file; "Delete all entries" in Settings clears it.</p>
+
+<h2>Source</h2>
+<p>The extension ships unminified; anyone can read <code>dist/</code> after unzipping. Source and tests available on request.</p>
+</div></body></html>
